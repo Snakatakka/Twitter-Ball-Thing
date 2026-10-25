@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/ogv/encoding_speed=1
+movie_writer/movie_file="C:/Users/user/OneDrive/Documents/twitter-ball-thing/Nodes/.ogv"
+movie_writer/fps=30
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

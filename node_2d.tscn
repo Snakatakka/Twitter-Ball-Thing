@@ -1,7 +1,39 @@
 [gd_scene format=3 uid="uid://beplt2e3elhdp"]
 
 [ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="3_epypp"]
 
-[node name="Node2D" type="Camera2D" unique_id=1348695520]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7q1pr"]
+friction = 0.0
+bounce = 1.0
 
-[node name="Ball" parent="." unique_id=336425284 instance=ExtResource("1_wtcfe")]
+[node name="Node2D" type="Node2D" unique_id=804591894]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=501225201]
+
+[node name="Ball" parent="." unique_id=34512557 instance=ExtResource("1_wtcfe")]
+position = Vector2(384, 0)
+physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+
+[node name="Ball2" parent="." unique_id=2053380715 instance=ExtResource("1_wtcfe")]
+position = Vector2(-384, 0)
+physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+
+[node name="Holder" type="Node2D" parent="." unique_id=807395492]
+
+[node name="Wall" parent="Holder" unique_id=1890904312 instance=ExtResource("3_epypp")]
+position = Vector2(0, 328)
+
+[node name="Wall2" parent="Holder" unique_id=3044859 instance=ExtResource("3_epypp")]
+position = Vector2(576, 0)
+rotation = -1.5707964
+
+[node name="Holder2" type="Node2D" parent="." unique_id=468269443]
+rotation = -3.1415927
+
+[node name="Wall" parent="Holder2" unique_id=1982100472 instance=ExtResource("3_epypp")]
+position = Vector2(0, 328)
+
+[node name="Wall2" parent="Holder2" unique_id=1035795529 instance=ExtResource("3_epypp")]
+position = Vector2(576, 0)
+rotation = -1.5707964
