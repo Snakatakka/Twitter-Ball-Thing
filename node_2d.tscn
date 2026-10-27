@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://beplt2e3elhdp"]
 
+[ext_resource type="Script" uid="uid://bcxyarkqavcup" path="res://arena.gd" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_wtcfe"]
-[ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://bpk72v2pjvnlu" path="res://ball_1_start.gd" id="2_epypp"]
+[ext_resource type="Theme" uid="uid://vpjclde3cspn" path="res://Themes/Title/TitleTheme.tres" id="5_q6r6c"]
+
+[sub_resource type="Theme" id="Theme_4kxuq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7q1pr"]
 friction = 0.0
@@ -9,31 +14,119 @@ bounce = 1.0
 
 [node name="Node2D" type="Node2D" unique_id=804591894]
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1256354092]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -344.0
+offset_right = 246.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(247, 34.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Ball1Name" type="Label" parent="HBoxContainer" unique_id=84711544]
+layout_mode = 2
+theme = ExtResource("5_q6r6c")
+text = "Blue Guy"
+
+[node name="Versus" type="Label" parent="HBoxContainer" unique_id=1746240173]
+layout_mode = 2
+theme = ExtResource("5_q6r6c")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "vs"
+
+[node name="Ball2Name" type="Label" parent="HBoxContainer" unique_id=754081617]
+layout_mode = 2
+theme = ExtResource("5_q6r6c")
+text = "Red Guy"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=501225201]
 
-[node name="Ball" parent="." unique_id=34512557 instance=ExtResource("1_wtcfe")]
-position = Vector2(384, 0)
-physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+[node name="Background" type="ColorRect" parent="." unique_id=522149888]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -384.0
+offset_right = 288.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16827673, 0.7006383, 0.4685359, 1)
 
-[node name="Ball2" parent="." unique_id=2053380715 instance=ExtResource("1_wtcfe")]
-position = Vector2(-384, 0)
-physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+[node name="Arena" type="Node2D" parent="." unique_id=1545494432]
+show_behind_parent = true
+script = ExtResource("1_0hol4")
 
-[node name="Holder" type="Node2D" parent="." unique_id=807395492]
+[node name="ColorRect" type="ColorRect" parent="Arena" unique_id=227081150]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 270.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4kxuq")
 
-[node name="Wall" parent="Holder" unique_id=1890904312 instance=ExtResource("3_epypp")]
-position = Vector2(0, 328)
+[node name="Wall" parent="Arena" unique_id=1890904312 instance=ExtResource("2_0e48y")]
+position = Vector2(-8, 240)
 
-[node name="Wall2" parent="Holder" unique_id=3044859 instance=ExtResource("3_epypp")]
-position = Vector2(576, 0)
-rotation = -1.5707964
-
-[node name="Holder2" type="Node2D" parent="." unique_id=468269443]
+[node name="Wall2" parent="Arena" unique_id=1091900902 instance=ExtResource("2_0e48y")]
+position = Vector2(0, -240)
 rotation = -3.1415927
 
-[node name="Wall" parent="Holder2" unique_id=1982100472 instance=ExtResource("3_epypp")]
-position = Vector2(0, 328)
+[node name="Wall3" parent="Arena" unique_id=1526116466 instance=ExtResource("2_0e48y")]
+position = Vector2(-240, 0)
+rotation = 1.5707964
 
-[node name="Wall2" parent="Holder2" unique_id=1035795529 instance=ExtResource("3_epypp")]
-position = Vector2(576, 0)
+[node name="Wall4" parent="Arena" unique_id=858250769 instance=ExtResource("2_0e48y")]
+position = Vector2(240, 0)
 rotation = -1.5707964
+
+[node name="Label" type="Label" parent="Arena" unique_id=1499807929]
+self_modulate = Color(1, 1, 1, 0.13725491)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = 176.0
+offset_right = 205.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "@snakatakka"
+
+[node name="Ball1Start" type="Node2D" parent="." unique_id=1139257257]
+position = Vector2(-120, 0)
+script = ExtResource("2_epypp")
+
+[node name="Ball" parent="Ball1Start" unique_id=34512557 instance=ExtResource("1_wtcfe")]
+position = Vector2(120, 0)
+physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+color = Color(0, 0.44814444, 0.92472243, 1)
+
+[node name="Ball2Start" type="Node2D" parent="." unique_id=1186508436]
+position = Vector2(120, 0)
+
+[node name="Ball2" parent="Ball2Start" unique_id=2053380715 instance=ExtResource("1_wtcfe")]
+position = Vector2(-120, 0)
+physics_material_override = SubResource("PhysicsMaterial_7q1pr")
+color = Color(0.8509804, 0, 0.12941177, 1)

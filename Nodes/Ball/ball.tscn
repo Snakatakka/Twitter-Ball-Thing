@@ -3,12 +3,17 @@
 [ext_resource type="Script" uid="uid://c3hqgfae41tmu" path="res://Nodes/Ball/ball.gd" id="1_dpx8e"]
 [ext_resource type="PhysicsMaterial" uid="uid://b33qlesvk6mae" path="res://Nodes/Ball/ballphysicsmateriall.tres" id="1_ogea8"]
 [ext_resource type="Script" uid="uid://cj8ppkn58bae7" path="res://Nodes/Ball/circle.gd" id="3_ogea8"]
+[ext_resource type="Script" uid="uid://r6yem7togmlq" path="res://Nodes/Ball/control.gd" id="4_gd5up"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
 
-[node name="Ball" type="RigidBody2D" unique_id=2053380715]
-mass = 0.5
+[node name="Ball" type="RigidBody2D" unique_id=2053380715 groups=["Ball", "Weapon"]]
+mass = 0.25
 physics_material_override = ExtResource("1_ogea8")
+gravity_scale = 0.0
+sleeping = true
+contact_monitor = true
+max_contacts_reported = 4000
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_dpx8e")
@@ -18,3 +23,33 @@ script = ExtResource("3_ogea8")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2095591799]
 shape = SubResource("CircleShape2D_4kxuq")
+
+[node name="Control" type="Control" parent="." unique_id=1387076459]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_gd5up")
+
+[node name="Label" type="Label" parent="Control" unique_id=892498060]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -41.0
+offset_right = 5.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 20)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 35
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
