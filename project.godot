@@ -13,7 +13,6 @@ config_version=5
 config/name="Twitter Ball Thing"
 run/main_scene="uid://beplt2e3elhdp"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [display]
 

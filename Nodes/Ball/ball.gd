@@ -9,19 +9,17 @@ extends RigidBody2D
 var health : int = 100
 
 func _ready() -> void:
+	get_parent().ball_name = name
 	collision_shape.position = get_parent().position
 	collision_shape.shape.radius = radius
 	
 	await get_tree().create_timer(3).timeout
-	gravity_scale = 0.9
-	apply_central_impulse(Vector2(_get_random_float(-150, 150), _get_random_float(-150, 150)))
+	gravity_scale = 0.95
+	apply_central_impulse(Vector2(_get_random_float(-250, 250), _get_random_float(-250, 250)))
 
 func _get_random_float(min : float, max : float) -> float:
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	return rng.randi_range(min, max)
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Weapon"):
-		health -= 5
-		if health <= 0:
-			call_deferred("queue_free")
+	pass

@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://beplt2e3elhdp"]
 
-[ext_resource type="Script" uid="uid://bcxyarkqavcup" path="res://arena.gd" id="1_0hol4"]
-[ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_wtcfe"]
-[ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="2_0e48y"]
-[ext_resource type="Script" uid="uid://bpk72v2pjvnlu" path="res://ball_1_start.gd" id="2_epypp"]
-[ext_resource type="Theme" uid="uid://vpjclde3cspn" path="res://Themes/Title/TitleTheme.tres" id="5_q6r6c"]
+[ext_resource type="Script" uid="uid://d164ejjroifhf" path="res://Nodes/Arena/h_box_container.gd" id="1_sbb53"]
+[ext_resource type="Theme" uid="uid://vpjclde3cspn" path="res://Themes/Title/TitleTheme.tres" id="2_sbb53"]
+[ext_resource type="Script" uid="uid://bcxyarkqavcup" path="res://Nodes/Arena/arena.gd" id="3_yokb4"]
+[ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="4_35c7g"]
+[ext_resource type="Script" uid="uid://bpk72v2pjvnlu" path="res://Nodes/Arena/ballstart.gd" id="5_n068f"]
+[ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="6_g8a64"]
 
 [sub_resource type="Theme" id="Theme_4kxuq"]
 
@@ -29,21 +30,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 alignment = 1
+script = ExtResource("1_sbb53")
 
 [node name="Ball1Name" type="Label" parent="HBoxContainer" unique_id=84711544]
 layout_mode = 2
-theme = ExtResource("5_q6r6c")
+theme = ExtResource("2_sbb53")
 text = "Blue Guy"
 
 [node name="Versus" type="Label" parent="HBoxContainer" unique_id=1746240173]
 layout_mode = 2
-theme = ExtResource("5_q6r6c")
+theme = ExtResource("2_sbb53")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "vs"
 
 [node name="Ball2Name" type="Label" parent="HBoxContainer" unique_id=754081617]
 layout_mode = 2
-theme = ExtResource("5_q6r6c")
+theme = ExtResource("2_sbb53")
 text = "Red Guy"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=501225201]
@@ -65,7 +67,7 @@ color = Color(0.16827673, 0.7006383, 0.4685359, 1)
 
 [node name="Arena" type="Node2D" parent="." unique_id=1545494432]
 show_behind_parent = true
-script = ExtResource("1_0hol4")
+script = ExtResource("3_yokb4")
 
 [node name="ColorRect" type="ColorRect" parent="Arena" unique_id=227081150]
 show_behind_parent = true
@@ -82,18 +84,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_4kxuq")
 
-[node name="Wall" parent="Arena" unique_id=1890904312 instance=ExtResource("2_0e48y")]
+[node name="Wall" parent="Arena" unique_id=1890904312 instance=ExtResource("4_35c7g")]
 position = Vector2(-8, 240)
 
-[node name="Wall2" parent="Arena" unique_id=1091900902 instance=ExtResource("2_0e48y")]
+[node name="Wall2" parent="Arena" unique_id=1091900902 instance=ExtResource("4_35c7g")]
 position = Vector2(0, -240)
 rotation = -3.1415927
 
-[node name="Wall3" parent="Arena" unique_id=1526116466 instance=ExtResource("2_0e48y")]
+[node name="Wall3" parent="Arena" unique_id=1526116466 instance=ExtResource("4_35c7g")]
 position = Vector2(-240, 0)
 rotation = 1.5707964
 
-[node name="Wall4" parent="Arena" unique_id=858250769 instance=ExtResource("2_0e48y")]
+[node name="Wall4" parent="Arena" unique_id=858250769 instance=ExtResource("4_35c7g")]
 position = Vector2(240, 0)
 rotation = -1.5707964
 
@@ -116,17 +118,18 @@ text = "@snakatakka"
 
 [node name="Ball1Start" type="Node2D" parent="." unique_id=1139257257]
 position = Vector2(-120, 0)
-script = ExtResource("2_epypp")
+script = ExtResource("5_n068f")
 
-[node name="Ball" parent="Ball1Start" unique_id=34512557 instance=ExtResource("1_wtcfe")]
+[node name="Blue Guy" parent="Ball1Start" unique_id=34512557 instance=ExtResource("6_g8a64")]
 position = Vector2(120, 0)
 physics_material_override = SubResource("PhysicsMaterial_7q1pr")
 color = Color(0, 0.44814444, 0.92472243, 1)
 
 [node name="Ball2Start" type="Node2D" parent="." unique_id=1186508436]
 position = Vector2(120, 0)
+script = ExtResource("5_n068f")
 
-[node name="Ball2" parent="Ball2Start" unique_id=2053380715 instance=ExtResource("1_wtcfe")]
+[node name="Red Guy" parent="Ball2Start" unique_id=2053380715 instance=ExtResource("6_g8a64")]
 position = Vector2(-120, 0)
 physics_material_override = SubResource("PhysicsMaterial_7q1pr")
 color = Color(0.8509804, 0, 0.12941177, 1)
