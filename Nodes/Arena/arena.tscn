@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d164ejjroifhf" path="res://Nodes/Arena/h_box_container.gd" id="1_sbb53"]
 [ext_resource type="Theme" uid="uid://vpjclde3cspn" path="res://Themes/Title/TitleTheme.tres" id="2_sbb53"]
-[ext_resource type="Script" uid="uid://bcxyarkqavcup" path="res://Nodes/Arena/arena.gd" id="3_yokb4"]
+[ext_resource type="Script" uid="uid://cda4f4t3tscc2" path="res://Nodes/Arena/arena.gd" id="3_yokb4"]
 [ext_resource type="PackedScene" uid="uid://c6mtixumubmwq" path="res://Nodes/Wall/wall.tscn" id="4_35c7g"]
+[ext_resource type="Script" uid="uid://bcxyarkqavcup" path="res://Nodes/Arena/border.gd" id="4_bxqey"]
 [ext_resource type="Script" uid="uid://bpk72v2pjvnlu" path="res://Nodes/Arena/ballstart.gd" id="5_n068f"]
 [ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="6_g8a64"]
 
@@ -13,7 +14,8 @@
 friction = 0.0
 bounce = 1.0
 
-[node name="Node2D" type="Node2D" unique_id=804591894]
+[node name="Arena" type="Node2D" unique_id=804591894]
+script = ExtResource("3_yokb4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1256354092]
 anchors_preset = 15
@@ -67,7 +69,7 @@ color = Color(0.16827673, 0.7006383, 0.4685359, 1)
 
 [node name="Arena" type="Node2D" parent="." unique_id=1545494432]
 show_behind_parent = true
-script = ExtResource("3_yokb4")
+script = ExtResource("4_bxqey")
 
 [node name="ColorRect" type="ColorRect" parent="Arena" unique_id=227081150]
 show_behind_parent = true
@@ -119,6 +121,7 @@ text = "@snakatakka"
 [node name="Ball1Start" type="Node2D" parent="." unique_id=1139257257]
 position = Vector2(-120, 0)
 script = ExtResource("5_n068f")
+ball_name = "Blue Guy"
 
 [node name="Blue Guy" parent="Ball1Start" unique_id=34512557 instance=ExtResource("6_g8a64")]
 position = Vector2(120, 0)
@@ -128,6 +131,7 @@ color = Color(0, 0.44814444, 0.92472243, 1)
 [node name="Ball2Start" type="Node2D" parent="." unique_id=1186508436]
 position = Vector2(120, 0)
 script = ExtResource("5_n068f")
+ball_name = "Red Guy"
 
 [node name="Red Guy" parent="Ball2Start" unique_id=2053380715 instance=ExtResource("6_g8a64")]
 position = Vector2(-120, 0)

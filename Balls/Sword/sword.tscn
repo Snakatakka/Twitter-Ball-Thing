@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ch6o5is7jb81e"]
+
+[ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_mfj8y"]
+
+[node name="Sword" unique_id=2053380715 instance=ExtResource("1_mfj8y")]
+color = Color(0.91, 0.28210002, 0.28210002, 1)

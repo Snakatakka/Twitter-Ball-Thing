@@ -4,10 +4,12 @@
 [ext_resource type="PhysicsMaterial" uid="uid://b33qlesvk6mae" path="res://Nodes/Ball/ballphysicsmateriall.tres" id="1_ogea8"]
 [ext_resource type="Script" uid="uid://cj8ppkn58bae7" path="res://Nodes/Ball/circle.gd" id="3_ogea8"]
 [ext_resource type="Script" uid="uid://r6yem7togmlq" path="res://Nodes/Ball/control.gd" id="4_gd5up"]
+[ext_resource type="Script" uid="uid://dy8ey5tn4ah8o" path="res://Nodes/Ball/weapon_pivot.gd" id="4_k6sae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
+radius = 40.0
 
-[node name="Ball" type="RigidBody2D" unique_id=2053380715 groups=["Ball", "Weapon"]]
+[node name="Ball" type="RigidBody2D" unique_id=2053380715 groups=["Ball"]]
 mass = 0.25
 physics_material_override = ExtResource("1_ogea8")
 gravity_scale = 0.0
@@ -20,6 +22,9 @@ script = ExtResource("1_dpx8e")
 
 [node name="Circle" type="Node2D" parent="." unique_id=74486064]
 script = ExtResource("3_ogea8")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=1213019131]
+script = ExtResource("4_k6sae")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2095591799]
 shape = SubResource("CircleShape2D_4kxuq")

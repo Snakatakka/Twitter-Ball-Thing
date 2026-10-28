@@ -1,3 +1,4 @@
+@tool
 extends HBoxContainer
 
 @onready var ball_1_name : Label = $Ball1Name
