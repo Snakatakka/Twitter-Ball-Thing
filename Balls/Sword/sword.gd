@@ -10,9 +10,7 @@ var clash_sfx : AudioStream = load("res://Assets/Sound Effects/General/clash.wav
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().create_timer(3).timeout
-	area.monitoring = true 
-	print("monitoring!")
-	# Prevents the weapon from damaging the parent because that's a thing that can happen for some reason.
+	area.monitoring = true
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if area.is_in_group("Weapon"):

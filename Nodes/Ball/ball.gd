@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	if not Engine.is_editor_hint():
 		await get_tree().create_timer(3).timeout
-		gravity_scale = 1.2
+		gravity_scale = 1.5
 		apply_central_impulse(Vector2(_get_random_float(-max_impulse, max_impulse), _get_random_float(-max_impulse, max_impulse)))
 
 func _damaged(damage : float, body : Node2D) -> void:

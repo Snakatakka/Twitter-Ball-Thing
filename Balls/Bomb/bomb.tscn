@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://553l8q8mqe7p"]
+
+[ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_2j2cr"]
+[ext_resource type="Script" uid="uid://c7vmrbh4c851" path="res://Balls/Bomb/bomb.gd" id="2_2j2cr"]
+[ext_resource type="Texture2D" uid="uid://dl2biaoek20n6" path="res://icon_color.svg" id="3_q6er3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twl3h"]
+size = Vector2(70, 70)
+
+[node name="Bomb" unique_id=2053380715 instance=ExtResource("1_2j2cr")]
+color = Color(0.019986123, 0, 0.15184042, 1)
+
+[node name="Bomb" type="Node2D" parent="." index="4" unique_id=1023026479 groups=["Weapon"]]
+position = Vector2(-80, 0)
+script = ExtResource("2_2j2cr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bomb" index="0" unique_id=960292723]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_q6er3")
+
+[node name="Area2D" type="Area2D" parent="Bomb" index="1" unique_id=1320418942 groups=["Weapon"]]
+collision_layer = 2
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb/Area2D" index="0" unique_id=82350469 groups=["Weapon"]]
+shape = SubResource("RectangleShape2D_twl3h")
+
+[connection signal="area_entered" from="Bomb/Area2D" to="Bomb" method="_on_area_2d_area_entered"]
