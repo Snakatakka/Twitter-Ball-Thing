@@ -11,7 +11,7 @@ extends RigidBody2D
 
 var clack_sfx : AudioStream = load("res://Assets/Sound Effects/General/clack.wav")
 var health : float = 100
-var max_impulse : float = 250
+var max_impulse : float = 230
 var frozen : bool = false
 var invulnerable : bool = false
 var time : float = 0
@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	if not Engine.is_editor_hint():
 		await get_tree().create_timer(3).timeout
-		gravity_scale = 1.0
+		gravity_scale = 1.2
 		apply_central_impulse(Vector2(_get_random_float(-max_impulse, max_impulse), _get_random_float(-max_impulse, max_impulse)))
 
 func _damaged(damage : float, body : Node2D) -> void:

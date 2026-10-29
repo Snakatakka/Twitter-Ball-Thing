@@ -20,6 +20,7 @@ texture = ExtResource("2_aroih")
 
 [node name="Area2D" type="Area2D" parent="WeaponPivot/Sword" index="1" unique_id=1726726685 groups=["Weapon"]]
 collision_layer = 2
+collision_mask = 3
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/Sword/Area2D" index="0" unique_id=1841812947 groups=["Weapon"]]
