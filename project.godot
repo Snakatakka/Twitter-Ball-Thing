@@ -37,8 +37,17 @@ Ball=""
 Weapon=""
 Wall=""
 
+[layer_names]
+
+2d_physics/layer_1="Ball"
+2d_physics/layer_2="Weapon"
+2d_physics/layer_3="Wall"
+
 [physics]
 
+2d/run_on_separate_thread=true
+common/physics_ticks_per_second=120
+2d/physics_engine="Rapier2D"
 3d/physics_engine="Jolt Physics"
 
 [rendering]

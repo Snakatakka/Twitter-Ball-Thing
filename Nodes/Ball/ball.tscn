@@ -10,10 +10,13 @@
 radius = 40.0
 
 [node name="Ball" type="RigidBody2D" unique_id=2053380715 groups=["Ball"]]
+collision_mask = 5
 mass = 0.25
 physics_material_override = ExtResource("1_ogea8")
 gravity_scale = 0.0
 sleeping = true
+lock_rotation = true
+continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4000
 linear_damp_mode = 1
@@ -28,6 +31,8 @@ script = ExtResource("4_k6sae")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2095591799]
 shape = SubResource("CircleShape2D_4kxuq")
+
+[node name="AudioStream" type="AudioStreamPlayer2D" parent="." unique_id=278020531]
 
 [node name="Control" type="Control" parent="." unique_id=1387076459]
 layout_mode = 3

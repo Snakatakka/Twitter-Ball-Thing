@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://ch6o5is7jb81e"]
 
 [ext_resource type="PackedScene" uid="uid://d0u7u42cemnfn" path="res://Nodes/Ball/ball.tscn" id="1_mfj8y"]
+[ext_resource type="Script" uid="uid://djb6ndvse0ghv" path="res://Balls/Sword/sword.gd" id="2_abe4n"]
+[ext_resource type="Texture2D" uid="uid://dl2biaoek20n6" path="res://icon_color.svg" id="2_aroih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
+size = Vector2(70, 70)
 
 [node name="Sword" unique_id=2053380715 instance=ExtResource("1_mfj8y")]
 color = Color(0.91, 0.28210002, 0.28210002, 1)
+
+[node name="Sword" type="Node2D" parent="WeaponPivot" parent_id_path=PackedInt32Array(1213019131) index="0" unique_id=1186220668 groups=["Weapon"]]
+position = Vector2(-80, 0)
+script = ExtResource("2_abe4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponPivot/Sword" index="0" unique_id=1143066410]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_aroih")
+
+[node name="Area2D" type="Area2D" parent="WeaponPivot/Sword" index="1" unique_id=1726726685 groups=["Weapon"]]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/Sword/Area2D" index="0" unique_id=1841812947 groups=["Weapon"]]
+shape = SubResource("RectangleShape2D_4kxuq")
+
+[connection signal="area_entered" from="WeaponPivot/Sword/Area2D" to="WeaponPivot/Sword" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="WeaponPivot/Sword/Area2D" to="WeaponPivot/Sword" method="_on_area_2d_body_entered"]

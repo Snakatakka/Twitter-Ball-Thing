@@ -1,0 +1,25 @@
+extends Node2D
+@onready var ball : RigidBody2D = $"../.."
+@onready var weapon_pivot : Node2D = $".."
+@onready var area : Area2D = $Area2D
+@onready var audio_stream : AudioStreamPlayer2D = $"../../AudioStream"
+var damage : float = 1.0
+var sword_sfx : AudioStream = load("res://Assets/Sound Effects/Ball/Sword/sword.wav")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	await get_tree().create_timer(3).timeout
+	area.monitoring = true 
+	# Prevents the weapon from damaging the parent because that's a thing that can happen for some reason.
+
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+	if area.is_in_group("Weapon"):
+		weapon_pivot.clockwise = !weapon_pivot.clockwise
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	
+	if body.is_in_group("Ball") && (body != get_parent()) && (body.invulnerable == false):
+		body._damaged(damage, ball)
+		damage += 0.5
+		audio_stream.stream = sword_sfx
+		audio_stream.play()
